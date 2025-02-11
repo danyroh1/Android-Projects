@@ -1,4 +1,4 @@
-package com.example
+package com.example.ejemplo1
 
 import android.os.Bundle
 import android.os.Message
