@@ -1,58 +1,74 @@
 package com.example.ejemplo1
 
 import android.os.Bundle
-import android.os.Message
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 import com.example.ejemplo1.ui.theme.Ejemplo1Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
+        enableEdgeToEdge()
         setContent {
             Ejemplo1Theme {
-               // Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                   Surface(
-                       modifier = Modifier.fillMaxSize(),
-                       color = MaterialTheme.colorScheme.background
-                   ) {
-                   }
-                }
+            }
             }
         }
-    private fun Surface(modifier: Modifier, color: Any, function:() -> Unit){
-
     }
-}
 
-@Composable
-fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
-    Text(
-        text = message,
-        fontSize = 100.sp,
-        lineHeight = 116.sp,
-    )
-    Text(
-        text = from,
-        fontSize = 36.sp
-    )
-}
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    Ejemplo1Theme {
-        GreetingText(message = "Feliz Cumpleaños Dante!", from = "De miYo")
+   Column{// FondoIma()
+    BotonCalc()
+    TFValor()
+}
+}
+@Composable
+fun FondoIma() {
+    Image(
+        painter = painterResource(id = R.drawable.fondoesc),
+        contentDescription = "Fondo",
+//        modifier = Modifier.fillMaxWidth()
+    )
+}
+@Composable
+fun BotonCalc() {
+    Button(onClick = {
+        //your onclick code here
+    }) {
+        Text(text = "Calcular")
     }
+}
+@Composable
+fun TFValor() {
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+    OutlinedTextField(
+        value = text,
+        label = { Text(text = "Valor 1") },
+        onValueChange = {
+            text = it
+        }
+
+    )
 }
