@@ -106,7 +106,7 @@ fun TFValor2() {
         label = { Text(text = "Valor 2") },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = Modifier
-            .padding(horizontal = 90.dp, vertical = 25.dp)
+            .padding(horizontal = 90.dp, vertical = 20.dp)
             .fillMaxWidth(1f),
         onValueChange = { it ->
             text = it
