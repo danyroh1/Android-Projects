@@ -90,8 +90,8 @@ fun TFValor1() {
         label = { Text(text = "Valor 1") },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = Modifier
-            .padding(10.dp)
-            .fillMaxWidth(0.6f),
+            .padding(horizontal = 90.dp, vertical = 20.dp)
+            .fillMaxWidth(1f),
         onValueChange = { it ->
             text = it
         }
@@ -106,8 +106,8 @@ fun TFValor2() {
         label = { Text(text = "Valor 2") },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = Modifier
-            .padding(10.dp)
-            .fillMaxWidth(0.6f),
+            .padding(horizontal = 90.dp, vertical = 20.dp)
+            .fillMaxWidth(1f),
         onValueChange = { it ->
             text = it
         }
