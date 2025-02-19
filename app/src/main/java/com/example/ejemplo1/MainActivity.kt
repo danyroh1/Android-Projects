@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -27,6 +28,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,13 +44,18 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-   Column{
-    FondoIma()
-    TFValor1()
-    TFValor2()
-    BotonCalc()
-   }
-}
+//    Box(
+//       // modifier = Modifier.fillMaxSize(),
+//        contentAlignment = Alignment.Center
+//    ) {
+        Column {
+            FondoIma()
+            TFValor1()
+            TFValor2()
+            BotonCalc()
+        }
+    }
+//}
 @Composable
 fun FondoIma() {
     Image(
@@ -62,8 +69,8 @@ fun FondoIma() {
 @Composable
 fun BotonCalc() {
     Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        modifier = Modifier.padding(10.dp).fillMaxSize(),
+        contentAlignment = Alignment.TopCenter
     ) {
         Button(
             onClick = {
@@ -82,6 +89,9 @@ fun TFValor1() {
         value = text,
         label = { Text(text = "Valor 1") },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        modifier = Modifier
+            .padding(10.dp)
+            .fillMaxWidth(0.6f),
         onValueChange = { it ->
             text = it
         }
@@ -95,6 +105,9 @@ fun TFValor2() {
         value = text,
         label = { Text(text = "Valor 2") },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        modifier = Modifier
+            .padding(10.dp)
+            .fillMaxWidth(0.6f),
         onValueChange = { it ->
             text = it
         }
