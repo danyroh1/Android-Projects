@@ -5,15 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.ejemplo1.ui.theme.Ejemplo1Theme
@@ -33,8 +34,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Ejemplo1Theme {
-            }
+
             }
         }
     }
@@ -45,52 +45,59 @@ class MainActivity : ComponentActivity() {
 fun GreetingPreview() {
    Column{
     FondoIma()
-    BotonCalc()
     TFValor1()
     TFValor2()
-}
+    BotonCalc()
+   }
 }
 @Composable
 fun FondoIma() {
     Image(
         painter = painterResource(id = R.drawable.fondo),
         contentDescription = "Fondo",
-        //modifier = Modifier.fillMaxWidth(),
-        //alignment = Alignment.TopStart,
-        //contentScale = ContentScale.FillWidth
+        modifier = Modifier.fillMaxWidth(),
+        alignment = Alignment.TopStart,
+        contentScale = ContentScale.FillWidth
     )
 }
 @Composable
 fun BotonCalc() {
-    Button(onClick = {
-        //your onclick code
-    },
-        colors = ButtonDefaults.buttonColors(Color.DarkGray))
-    {
-        Text(text = "Calcular",color = Color.White)
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Button(
+            onClick = {
+                //your onclick code
+            },
+            colors = ButtonDefaults.buttonColors(Color.DarkGray),
+        ) {
+            Text(text = "Calcular", color = Color.White)
+        }
     }
 }
 @Composable
 fun TFValor1() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
-    OutlinedTextField(
+    TextField(
         value = text,
         label = { Text(text = "Valor 1") },
-        onValueChange = {
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        onValueChange = { it ->
             text = it
         }
-
     )
 }
+
 @Composable
 fun TFValor2() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
-    OutlinedTextField(
+    TextField(
         value = text,
         label = { Text(text = "Valor 2") },
-        onValueChange = {
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        onValueChange = { it ->
             text = it
         }
-
     )
 }
